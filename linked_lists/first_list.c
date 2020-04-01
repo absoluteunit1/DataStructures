@@ -6,7 +6,7 @@
 typedef struct node {
 
     int value;
-    struct node* next;
+    struct node *next;
 
 }node_t;
 
@@ -16,26 +16,33 @@ typedef struct node {
 void printLinkedList(node_t *head){
     node_t *temporary = head;
     while(temporary != NULL){
-        printf("%d - ", temporary -> value);
-        temporary = temporary -> next;
+        if(temporary->next != NULL){
+            printf("%d -> ", temporary -> value);
+            temporary = temporary -> next;
+        }
+        else{
+            printf("%d", temporary -> value);
+            temporary = temporary -> next;
+        }
     }
     printf("\n");
 }
 
 void main(){
-    node_t n1, n2, n3;
+    node_t n1, n2, n3, n4;
     node_t *head;
 
     n1.value = 45;
     n2.value = 8;
     n3.value = 32;
+    n4.value = 50;
 
     // link up the nodes
 
-    head = &n3;
-    n3.next = &n2;
+    head = &n2;
+    n3.next = &n4;
     n2.next = &n1;
-    n1.next = NULL; // so we know when to stop
-
+    n1.next = &n3; // so we know when to stop
+    n4.next = NULL;
     printLinkedList(head);
 }
