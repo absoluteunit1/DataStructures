@@ -34,6 +34,7 @@ class Node:
         self.next = None
 
 class LinkedList:
+
     def __init__(self):
         self.head = Node()          # Head node contains no data and is not accessible. It is used as a place holder which will allow us to point to the first node in the list
 
@@ -54,13 +55,49 @@ class LinkedList:
     
     def display(self):
         cur_node = self.head
+        print("START-> ",end="")
         while cur_node.next != None:
             cur_node = cur_node.next
-            print(cur_node.data, end="")
+            print(cur_node.data, end=" ->END\n") if cur_node.next == None else print(cur_node.data, end="-")
 
-list1 = LinkedList()
-list1.append("Hello")
-list1.append(" ")
-list1.append("World!")
-list1.append("\n")
-list1.display()
+    def get(self, index):
+        try:
+            cur_inx = 0
+            cur_node = self.head
+            while True:
+                cur_node=cur_node.next
+                if cur_inx == index:
+                    return cur_node.data
+                cur_inx += 1
+        except AttributeError as error:
+            print(f"The get() funcion encountered the following error: {error}")
+            return None
+    
+    def erase(self, index):
+        try:
+            cur_inx = 0
+            cur_node = self.head
+            while True:
+                last_node = cur_node
+                cur_node=cur_node.next
+                if cur_inx == index:
+                    last_node.next = cur_node.next
+                cur_inx += 1
+        except AttributeError as error:
+            print(f"The get() funcion encountered the following error: {error}")
+
+
+myList = LinkedList()
+
+myList.append(1)
+myList.append(2)
+myList.append(3)
+myList.append(4)
+myList.append(5)
+
+myList.display()
+myList.erase(2)
+myList.display()
+myList.erase(0)
+myList.display()
+
