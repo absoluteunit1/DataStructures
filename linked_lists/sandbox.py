@@ -93,6 +93,10 @@ class LinkedList:
                 print(f"The pop({index}) function call experienced the following error: {error}")
                 return None
     
+    # Swaps the locations of two nodes in the list; provided the indices
+    def swap(self, index_a, index_b):
+        # to do
+        pass
 
 
 
