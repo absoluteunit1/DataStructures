@@ -5,13 +5,14 @@ class Node:
         self.next = None
     
     def __str__(self):
-        return self.data  
-
-class LinkedList:
+        return self.data   
+        
+class LinkedList():
 
     # Initializes the list; with head of the list that contains no data and its next variable points to None
     def __init__(self):
         self.head = Node()
+
 
     # Adds a node to the beginning of the list
     def push(self, data):
@@ -43,10 +44,11 @@ class LinkedList:
     
     # Prints the list
     def display(self):
-        cur_node = self.head
-        while cur_node.next != None:
+        cur_node = self.head.next
+        while cur_node:
+            print(cur_node, end=" ")
             cur_node = cur_node.next
-            print(cur_node, end="->") if cur_node.next != None else print(cur_node)
+        print()
 
     # Returns a the data of the node of which the index was specified
     def get(self, index):
@@ -98,17 +100,12 @@ class LinkedList:
         # to do
         pass
 
-
-
     
 names = LinkedList()
 names.push('Anton')
 names.push('Vlad')
 names.push('John')
 names.append("Nick")
+print(names.length())
 names.display()
-names.pop(2)
-names.display()
-names.pop(5)
-names.pop(0)
 names.display()
