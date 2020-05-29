@@ -1,3 +1,8 @@
+# Regular queue
+# Uses circular arrays
+# Allows for removal from the front and insertion at the back
+
+
 class Empty(Exception):
     pass
 
